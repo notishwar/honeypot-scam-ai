@@ -41,3 +41,19 @@ def serve_ui():
 @app.get("/health")
 def health():
     return {"status": "ok"}
+
+
+@app.get("/styles.css")
+def serve_styles():
+    path = frontend_dir / "styles.css"
+    if path.exists():
+        return FileResponse(path)
+    return {"message": "styles.css not found"}
+
+
+@app.get("/app.js")
+def serve_app_js():
+    path = frontend_dir / "app.js"
+    if path.exists():
+        return FileResponse(path)
+    return {"message": "app.js not found"}
