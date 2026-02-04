@@ -1,0 +1,152 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scam Honey-Pot Console</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div class="bg-orb orb-a"></div>
+  <div class="bg-orb orb-b"></div>
+  <div class="noise"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="sigil">HP</div>
+      <div>
+        <div class="title">Agentic Honey-Pot</div>
+        <div class="subtitle">Scam Detection & Intelligence Console</div>
+      </div>
+    </div>
+    <div class="status" id="status">Disconnected</div>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <h2>Connection</h2>
+      <div class="field">
+        <label for="apiUrl">API URL</label>
+        <input id="apiUrl" type="text" value="http://localhost:8000/message" />
+      </div>
+      <div class="field">
+        <label for="apiKey">API Key</label>
+        <input id="apiKey" type="password" placeholder="Your API key" />
+      </div>
+      <div class="field">
+        <label for="sessionId">Session ID</label>
+        <input id="sessionId" type="text" value="demo-session" />
+      </div>
+      <div class="field">
+        <label for="persona">Persona</label>
+        <select id="persona">
+          <option value="elderly">Elderly</option>
+          <option value="gamer">Gamer</option>
+          <option value="hr">Corporate HR</option>
+        </select>
+      </div>
+      <div class="actions">
+        <button id="pingBtn" class="ghost">Ping</button>
+        <button id="clearBtn" class="ghost">Clear</button>
+      </div>
+
+      <h2>Scammer Message</h2>
+      <div class="field">
+        <label for="message">Incoming Message</label>
+        <textarea id="message" rows="6" placeholder="Paste scammer message here"></textarea>
+      </div>
+      <button id="sendBtn" class="primary">Analyze & Reply</button>
+    </section>
+
+    <section class="panel">
+      <h2>Conversation</h2>
+      <div id="chat" class="chat"></div>
+
+      <h2>Extracted Intelligence</h2>
+      <div class="threat-card">
+        <div class="threat-header">
+          <div class="threat-title">
+            <span class="dot"></span>
+            THREAT_MONITOR
+          </div>
+          <div class="risk" id="riskBadge">RISK: 0%</div>
+        </div>
+        <div class="persona-card">
+          <div class="persona-title">PERSONA CARD</div>
+          <div class="persona-grid">
+            <div><span class="label">Persona</span><span class="value" id="personaName">Elderly</span></div>
+            <div><span class="label">Age</span><span class="value" id="personaAge">—</span></div>
+            <div><span class="label">Device</span><span class="value" id="personaDevice">—</span></div>
+            <div><span class="label">Tech</span><span class="value" id="personaTech">—</span></div>
+            <div class="wide"><span class="label">Experience</span><span class="value" id="personaExp">—</span></div>
+            <div class="wide"><span class="label">Asked</span><span class="value" id="askedFields">—</span></div>
+          </div>
+        </div>
+        <div class="threat-grid">
+          <div class="threat-row">
+            <span class="label">PHONE ID</span>
+            <span class="value" id="phoneValue">NOT DETECTED</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">CRYPTO WALLET</span>
+            <span class="value" id="cryptoValue">NOT DETECTED</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">EMAIL ADDR</span>
+            <span class="value" id="emailValue">NOT DETECTED</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">BANK / UPI</span>
+            <span class="value" id="bankUpiValue">NOT DETECTED</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">PHISHING LINK</span>
+            <span class="value" id="linkValue">NOT DETECTED</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">ORIGIN</span>
+            <span class="value" id="originValue">UNKNOWN</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">SCAM INTENT</span>
+            <span class="value" id="scamIntent">UNKNOWN</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">SCAM SCORE</span>
+            <span class="value" id="scamScore">0</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">REASONS</span>
+            <span class="value" id="scamReasons">—</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">ALL UPI IDS</span>
+            <span class="value" id="allUpiValue">—</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">ALL BANK ACCOUNTS</span>
+            <span class="value" id="allBankValue">—</span>
+          </div>
+          <div class="threat-row">
+            <span class="label">ALL LINKS</span>
+            <span class="value" id="allLinksValue">—</span>
+          </div>
+        </div>
+      </div>
+      <!-- Legacy intel list removed (threat monitor replaces it) -->
+
+      <h2>API Response</h2>
+      <pre id="raw" class="raw"></pre>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Built for demo use. Keep API keys private.
+  </footer>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
